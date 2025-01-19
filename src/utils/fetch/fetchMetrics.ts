@@ -2,6 +2,7 @@ import axios from "axios";
 import { Metrics } from "../types";
 
 export async function fetchMetrics(): Promise<Metrics> {
-	const response = await axios.get<Metrics>("http://localhost:8080/metrics");
-	return response.data;
+  const url = process.env.NEXT_PUBLIC_LOCAL_URL;
+  const response = await axios.get<Metrics>(`${url}/metrics`);
+  return response.data;
 }
